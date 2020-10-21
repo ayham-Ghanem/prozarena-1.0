@@ -20,10 +20,10 @@ print ('sndeeed kadeeeeem')
 async def on_ready():
    change_status.start()
    print('Bot is Ready.')
+  
 
 
-
-
+  
 #@client.event
 #async def on_member_join(member):
   #  print(f'{member} has joined the server.')
@@ -32,7 +32,7 @@ async def on_ready():
 #@client.event
 #async def on_member_remove(member):
  #   print(f'{member} has left the server.')
-
+  
 
 #@client.command(aliases=['8ball', 'test'])
 #async def _8ball(ctx,*,question):
