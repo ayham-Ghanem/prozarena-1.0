@@ -1437,7 +1437,7 @@ async def teams(ctx):
 
 
 
-client.run('NzI1NDMzNjY2NDgxOTQ2NzM2.XxoDDA.DyYVovGz_w2IGsXj1mTpbq9d0hI')
+client.run('NzI1NDMzNjY2NDgxOTQ2NzM2.XvOqvw.RrMDToQIp-sOJ1dsJrJctaeOe2E')
 
 
 
@@ -1445,9 +1445,3 @@ client.run('NzI1NDMzNjY2NDgxOTQ2NzM2.XxoDDA.DyYVovGz_w2IGsXj1mTpbq9d0hI')
 
 
 
-
-# main NzI1NDMzNjY2NDgxOTQ2NzM2.XxoDDA.DyYVovGz_w2IGsXj1mTpbq9d0hI
-
-
-#test NzMyOTk2NzAwNzgzOTAyNzcw.XxoC4A.Ru8pAm359zDDrUzxAexqt3P1e7M
-    
