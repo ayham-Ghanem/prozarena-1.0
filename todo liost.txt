@@ -13,3 +13,7 @@ team 2 pick 2
 team 1 pick 2
 
 team 2 pick 1
+
+
+
+bieng able to change the winner after bieng click (accidently)
