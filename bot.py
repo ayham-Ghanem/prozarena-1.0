@@ -1361,5 +1361,5 @@ async def verify(ctx):
         msg = msg + elplayer.mention + ' '
     await channel.send(msg)
 
-token = 'NzI1NDMzNjY2NDgxOTQ2NzM2.XvOqvw.lbJbm4-bNMKfKd2sp6C9_61Aj44'
+token = ''
 client.run(token)
