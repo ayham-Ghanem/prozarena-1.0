@@ -8,6 +8,13 @@ import aiomysql
 import string
 from discord.utils import get
 
+playerList1 = []
+playerList2 = []
+playerList3 = []
+uplay1 = []
+uplay2 = []
+uplay3 = []
+
 war = []
 war1 = []
 war2 = []
@@ -45,10 +52,19 @@ async def on_command_error(ctx, error):
 
 
 @client.command(aliases=['c', 'C'])
+@commands.has_permissions(administrator=True)
 async def clear(ctx):
-    uplay1 = []
+    global playerList1
+    global uplay1
+    msg_lst = []
     embed = discord.Embed(
-        title='PA help', description=f'You are not in the Queue ', colour=discord.Colour.red())
+        title='PA help', description=f'Queue Reset ', colour=discord.Colour.red())
+    await ctx.send(embed=embed)
+    for i in playerList1:
+        msg_lst.append(i.mention)
+    await ctx.send(msg_lst)
+    playerList1 = []
+    uplay1 = []
 
 
 @client.command()
@@ -126,14 +142,6 @@ for filename in os.listdir('./cogs'):
 @tasks.loop(seconds=10)
 async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
-
-
-playerList1 = []
-playerList2 = []
-playerList3 = []
-uplay1 = []
-uplay2 = []
-uplay3 = []
 
 
 Qsize = 10
