@@ -1402,6 +1402,5 @@ async def change(ctx, player: discord.Member, new_player: discord.Member, teamNu
             await myDB1.commit()
         await ctx.send('fixed')
 
-
 token = 'NzI1NDMzNjY2NDgxOTQ2NzM2.XvOqvw.YoeFIQ-B2L8vz-iedcMkko5-baQ'
 client.run(token)
