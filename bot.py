@@ -1134,7 +1134,7 @@ async def info(ctx):
             await ctx.send(embed=embed)
 
 
-@client.command()
+@client.command(aliases=['Top', 'TOP'])
 async def top(ctx):
     myDB = await aiomysql.connect(host='localhost', user='root', password='ayham123123', db='test1')
     async with myDB.cursor() as cur:
@@ -1174,6 +1174,7 @@ async def top(ctx):
         await ctx.send(embed=Tembed)
 
 
+@client.command()
 @client.command(aliases=['CLAN', 'Clan', 'cLAN'])
 async def clan(ctx):
     mwjod = 0
@@ -1369,5 +1370,5 @@ async def verify(ctx):
         msg = msg + elplayer.mention + ' '
     await channel.send(msg)
 
-token = ''
+token = 'NzI1NDMzNjY2NDgxOTQ2NzM2.XvOqvw.YoeFIQ-B2L8vz-iedcMkko5-baQ'
 client.run(token)
