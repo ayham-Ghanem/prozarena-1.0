@@ -1,5 +1,6 @@
 import discord
 import random
+from discord import team
 from discord.ext import commands, tasks
 import os
 from itertools import cycle
@@ -1167,14 +1168,13 @@ async def top(ctx):
         for m in elmmrs:
             Mplayer = f"{Mplayer}" + f"{m}" + "\n"
 
-        await verify(ctx)
+        # await verify(ctx)
 
         Tembed.add_field(name="PLAYERS ", value=f"{Tplayer}", inline=True)
         Tembed.add_field(name="MMR ", value=f"{Mplayer}", inline=True)
         await ctx.send(embed=Tembed)
 
 
-@client.command()
 @client.command(aliases=['CLAN', 'Clan', 'cLAN'])
 async def clan(ctx):
     mwjod = 0
@@ -1352,23 +1352,56 @@ async def teams(ctx):
     await ctx.send(embed=embed)
 
 
-async def verify(ctx):
-    msg = ''
+# async def verify(ctx):
+#     msg = ''
+#     myDB = await aiomysql.connect(host='localhost', user='root', password='ayham123123', db='test1')
+#     async with myDB.cursor() as cur:
+#         await cur.execute(f"SELECT `name` FROM `whatever` ORDER BY `whatever`.`MMR` DESC LIMIT 15")
+#         await myDB.commit()
+#         elshbab = []
+#         elshb = await cur.fetchall()
+#         for i in elshb:
+#             i = ''.join(i)
+#             elshbab.append(i)
+
+#     channel = ctx.guild.get_channel(836379205225938954)
+#     for i in elshbab:
+#         elplayer = await client.fetch_user(i)
+#         msg = msg + elplayer.mention + ' '
+#     await channel.send(msg)
+
+
+@client.command()
+@commands.has_permissions(administrator=True)
+async def change(ctx, player: discord.Member, new_player: discord.Member, teamNum):
+
+    shbab = []
+    mwjod = 0
     myDB = await aiomysql.connect(host='localhost', user='root', password='ayham123123', db='test1')
     async with myDB.cursor() as cur:
-        await cur.execute(f"SELECT `name` FROM `whatever` ORDER BY `whatever`.`MMR` DESC LIMIT 15")
+        await cur.execute(f"SELECT `name` FROM `whatever`")
         await myDB.commit()
-        elshbab = []
-        elshb = await cur.fetchall()
-        for i in elshb:
+        up = await cur.fetchall()
+        for i in up:
             i = ''.join(i)
-            elshbab.append(i)
+            shbab.append(i)
+        for i in shbab:
+            if i == f'{ctx.author.id}':
+                mwjod = 1
 
-    channel = ctx.guild.get_channel(836379205225938954)
-    for i in elshbab:
-        elplayer = await client.fetch_user(i)
-        msg = msg + elplayer.mention + ' '
-    await channel.send(msg)
+    if mwjod != 1:
+        embed = discord.Embed(
+            title="PA help", description=f"{ctx.author.mention} ,You need to register using .player ", colour=discord.Colour.red())
+        await ctx.send(embed=embed)
+
+    else:
+
+        myDB1 = await aiomysql.connect(host='localhost', user='root', password='ayham123123', db='game id')
+        async with myDB1.cursor() as cur1:
+            await cur1.execute(f"UPDATE `games` SET `Team {teamNum}`= {new_player.id} WHERE `Won` = 0  && `Team {teamNum}` = {player.id}")
+            await myDB1.commit()
+        await ctx.send('fixed')
+
 
 token = 'NzI1NDMzNjY2NDgxOTQ2NzM2.XvOqvw.YoeFIQ-B2L8vz-iedcMkko5-baQ'
 client.run(token)
